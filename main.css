@@ -1,0 +1,221 @@
+:root {
+  --text-color: #000000;
+  --background-color: RGBA(218,189,255);
+}
+
+body {
+  font-family: Roboto, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.container {
+  padding: 0 40px;
+  margin-left: 80px;
+}
+
+  /* Свойства главной фотографии*/
+.photo {
+  border-radius: 100px;
+  /* Радиус скругления */
+  border: 3px solid transparent;
+  /* Параметры рамки */
+  box-shadow: 0 4px 15px 0px rgba(0, 0, 0, 0.52);
+  object-fit: cover;
+}
+
+  /* Эффект наведения на главную фотографию */
+.photo:hover {
+  border: 3px solid #000000;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin: 1.25em 0;
+}
+
+/* Стили для раскрывающегося Портфолио */
+.toggle-btn {
+  display: block;
+  text-decoration: none;
+  margin-bottom: 0em;
+  position: relative;
+  padding: 0px 0px; /* Отступы внутри поля */
+  background-color: var(--background-color); /* Исходный цвет фона */
+  border-radius: 8px; /* Скруглённые углы */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Плавные переходы */
+  color: #000000; /* Исходный цвет текста */
+  cursor: pointer; /* Курсор-указатель */
+  width: fit-content; /* Ширина по содержимому */
+}
+
+.toggle-btn:hover {
+  color: white; 
+  cursor: pointer; /* Курсор в виде указателя — визуальная подсказка, что элемент кликабелен */
+}
+
+.content {
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: height 0.5s ease, opacity 0.5s ease;
+  display: block;
+}
+
+.content.open {
+  opacity: 1;
+}
+
+.content > * {
+  transform: scale(0.9);
+  backface-visibility: hidden;
+}
+
+/* Стили для подсказки "Будет добавлено позже" */
+.tooltip {
+  position: relative;
+  display: inline-block; /* Чтобы контейнер подстраивался под размер картинки */
+}
+
+.tooltiptext {
+  visibility: hidden; /* Скрыта по умолчанию */
+  width: 200px;
+  background-color: #333; /* Тёмный фон */
+  color: white; /* Белый текст */
+  text-align: center;
+  padding: 8px 12px;
+  border-radius: 6px; /* Скруглённые углы */
+  position: absolute; /* Позиционируется относительно .tooltip */
+  z-index: 1; /* Поверх других элементов */
+  top: 50%; /* Выравниваем по вертикали (середина картинки) */
+  left: 100%; /* Располагается справа от контейнера .tooltip */
+  transform: translateY(-50%); /* Центрирование по вертикали */
+  white-space: nowrap; /* Текст в одну строку */
+  opacity: 0; /* Полностью прозрачна */
+  transition: opacity 0.5s; /* Плавное появление */
+  margin-left: 20px; /* Отступ от картинки */
+}
+
+.tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border: 5px solid transparent;
+  border-right-color: #333;
+}
+
+/* Показываем подсказку при наведении */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+ /* Свойства заглушки "Будет позже" */
+.plug {
+  border-radius: 100px;
+  border: 3px solid transparent; /* Радиус скругления */
+  object-fit: cover; /* Параметры рамки */
+}
+
+  /* Эффект наведения на картинку */
+.plug:hover {
+  outline: 5px solid #ad0711;
+}
+
+/* Свойства ссылок */
+a {
+  display: block;
+  text-decoration:none;
+  margin-bottom: 1.2em;
+  position: relative;
+}
+
+a:hover {
+  color:#FFD700; /* Что делать при наведении на ссылку */
+}
+
+a::after {
+  content: ''; /* Этим свойством добавляем подчеркивание через создание псевдокласса */
+  position: absolute;
+  left: 0;
+  right: 0;
+  transform: translateY(1.5em);
+  border-bottom: 1px solid #dadada;
+  width: 300px;
+}
+
+/* Стили для кнопки "Басня" */
+#poemButton {
+  margin: 30px 0;
+  display: block;
+  padding: 8px 25px;
+  background: black;
+  color: #C9A0FF; /* Нежно‑лиловый цвет текста */
+  border: none;
+  border-radius: 8px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+#poemButton:hover {
+  background: white;
+  color: black;
+}
+
+/* Стили для модального окна */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 800px;
+  max-height: 80vh;
+  overflow-y: auto;
+  font-family: Roboto, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.poem-text {
+  white-space: pre-line; /* Сохраняет переносы строк из текста */
+  margin-bottom: 20px;
+}
+
+.close-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #C9A0FF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+.close-button:hover {
+  background: #B18ACF;
+}
